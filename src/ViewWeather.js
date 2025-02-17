@@ -7,7 +7,7 @@ function ViewWeather({lat, lon, date}) {
 
     useEffect(() => {
       setData(null);
-      const API_ENDPOINT = 'http://ec2-54-183-158-158.us-west-1.compute.amazonaws.com/api/';
+      const API_ENDPOINT = 'https://ec2-54-183-158-158.us-west-1.compute.amazonaws.com/api/';
       const params = {
         lat: lat,
         lon: lon,
