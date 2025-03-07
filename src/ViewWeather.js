@@ -7,7 +7,7 @@ function ViewWeather({lat, lon, date}) {
 
     useEffect(() => {
       setData(null);
-      const API_ENDPOINT = 'https://ec2-54-183-158-158.us-west-1.compute.amazonaws.com/api/';
+      const API_ENDPOINT = process.env['REACT_APP_API_URL'];
       const params = {
         lat: lat,
         lon: lon,
@@ -26,15 +26,17 @@ function ViewWeather({lat, lon, date}) {
 
     return (
       <Control position='topright'>
+        <div className="border bg-red-200 bg-opacity-60 border-gray-400 rounded-2xl p-2 m-2 justify-around items-center">
           {data ? (
-            <div>
-              <p>{date.getFullYear()}年{date.getMonth()+1}月{date.getDate()}日</p>
+            <>
+              <p className='font-sans font-bold'>{date.getFullYear()}年{date.getMonth()+1}月{date.getDate()}日</p>
               <p>{data["city"]}</p>
               <p>Weather: {data["weather"]}</p>
-            </div>
+            </>
           ) : (
             <p>Loading...</p>
           )}
+        </div>
       </Control>
     );
 }
